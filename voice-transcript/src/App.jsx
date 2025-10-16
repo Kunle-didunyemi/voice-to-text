@@ -64,12 +64,12 @@ function App() {
 
   return (
     <div className="app">
-      <div className="app-container">
-        <header className="app-header">
-          <h1>🎤 VoiceNote</h1>
-          <p>Convert your speech to text instantly</p>
-        </header>
+      <header className="app-header">
+        <h1>🎤 VoiceNote</h1>
+        <p>Convert your speech to text instantly</p>
+      </header>
 
+      <div className="app-layout">
         <main className="app-main">
           <div className="settings-bar">
             <LanguageSelector
@@ -92,20 +92,22 @@ function App() {
             transcript={transcript}
             isListening={isListening}
           />
+        </main>
 
-          {recentTranscriptions.length > 0 && (
+        {recentTranscriptions.length > 0 && (
+          <aside className="app-sidebar">
             <RecentTranscriptions
               transcriptions={recentTranscriptions}
               onSelect={handleLoadRecent}
               onClear={handleClearRecent}
             />
-          )}
-        </main>
-
-        <footer className="app-footer">
-          <p>Works best in Chrome, Edge, or Safari browsers</p>
-        </footer>
+          </aside>
+        )}
       </div>
+
+      <footer className="app-footer">
+        <p>Works best in Chrome, Edge, or Safari browsers</p>
+      </footer>
     </div>
   );
 }
